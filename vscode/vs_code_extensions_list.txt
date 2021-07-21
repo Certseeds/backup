@@ -1,0 +1,45 @@
+// produce by `code --list-extensions >> vs_code_extensions_list.txt`
+2gua.rainbow-brackets
+aaron-bond.better-comments
+aeschli.vscode-css-formatter
+AlanWalk.markdown-toc
+austin.code-gnu-global
+cheshirekow.cmake-format
+daohong-emilio.yash
+DavidAnson.vscode-markdownlint
+dbaeumer.vscode-eslint
+donjayamanne.jupyter
+eamodio.gitlens
+ecmel.vscode-html-css
+faustinoaq.lex-flex-yacc-bison
+foxundermoon.shell-format
+GitHub.vscode-pull-request-github
+Gruntfuggly.todo-tree
+holmescn.vscode-wordcount-cjk
+James-Yu.latex-workshop
+joaompinto.vscode-graphviz
+k--kato.intellij-idea-keybindings
+luniclynx.bison
+marcostazi.VS-code-vagrantfile
+mhutchie.git-graph
+MS-CEINTL.vscode-language-pack-zh-hans
+ms-python.python
+ms-python.vscode-pylance
+ms-toolsai.jupyter
+ms-vscode-remote.remote-ssh
+ms-vscode-remote.remote-ssh-edit
+ms-vscode-remote.remote-wsl
+ms-vscode.cpptools
+ms-vscode.powershell
+njpwerner.autodocstring
+OBKoro1.korofileheader
+octref.vetur
+piotrpalarz.vscode-gitignore-generator
+Remisa.shellman
+shd101wyy.markdown-preview-enhanced
+timonwong.shellcheck
+twxs.cmake
+vscode-icons-team.vscode-icons
+yzhang.markdown-all-in-one
+// use by `get-content c:\exportedlist.txt | % { code --install-extension $_ }` on Windows
+// or `cat ./vs_code_extensions_list.txt | xargs -L1 code --install-extension` in unix-like

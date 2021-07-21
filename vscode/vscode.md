@@ -1,0 +1,1 @@
+1. 使用korofileheader,参考./../.vscode/settings.json ctrl+alt+i.
