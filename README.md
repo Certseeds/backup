@@ -7,8 +7,11 @@
  * @LastEditTime: 2020-07-05 10:01:48
  -->
 # backup
+
 模板,规则,操作以及设定.
+
 1. All code based on AGPL3.0(or any later version).
+
 2. All *.md files are based on CC-BY-NC-SA-4.0(or any later version).
 
 [![CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-orange)][cc_by_nc_sa_4_0]  
