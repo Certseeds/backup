@@ -3,21 +3,21 @@ $script = {
     "7zip",
     "adopt11-hotspot", "adopt14-hotspot", "adopt8-hotspot", "ant", "aria2",
     "cmake", "colortool",
-    "dark","dismplusplus",
-    "everything", "exiftool",
-    "gh", "github", "go", "gpg","gradle"
+    "dark", "dismplusplus",
+    "everything", "exiftool", "eartrumpet"
+    "gh", "github", "go", "gpg", "gradle"
     "innounp",
     "jetbrains-toolbox"
     "kotlin",
-    "maven","miniconda3","mysql",
-    "neatdownloadmanager", "neteasemusic", "nodejs","nvm",
-    "officetoolplus","oh-my-posh3",
-    "pdf-xchange-editor","potplayer","posh-git"
-    "rufus","rustup-msvc",
-    "spacesniffer","steam","sudo","SourceCodePro-NF","Source-Han-Sans-SC","Source-Han-Serif-SC",
+    "maven", "miniconda3", "mysql",
+    "neatdownloadmanager", "neteasemusic", "nodejs", "nvm",
+    "officetoolplus", "oh-my-posh3",
+    "pdf-xchange-editor", "potplayer", "posh-git"
+    "rufus", "rustup-msvc",
+    "spacesniffer", "steam", "sudo", "SourceCodePro-NF", "Source-Han-Sans-SC", "Source-Han-Serif-SC",
     "unxutils",
     "which";
-    $scoop_bucket_list = "extras", "java","nerd-fonts","dorado https://github.com/chawyehsu/dorado";
+    $scoop_bucket_list = "extras", "java", "nerd-fonts", "dorado https://github.com/chawyehsu/dorado";
     #Main-function
     function main {
         #starting helper function
