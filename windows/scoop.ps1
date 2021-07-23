@@ -5,7 +5,7 @@ $script = {
     "cmake", "colortool",
     "dark","dismplusplus",
     "everything", "exiftool",
-    "gh", "github", "go", "gpg4win","gradle"
+    "gh", "github", "go", "gpg","gradle"
     "innounp",
     "jetbrains-toolbox"
     "kotlin",
