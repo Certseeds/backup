@@ -5,8 +5,8 @@ set -eoux pipefail
 # @Organization: SUSTech
 # @Author: nanoseeds
 # @Date: 2020-02-14 12:03:47
- # @LastEditors: nanoseeds
- # @LastEditTime: 2021-07-24 11:23:48
+# @LastEditors: nanoseeds
+# @LastEditTime: 2021-07-24 16:18:20
 ###
 USER_AGENT="Mozilla/5.0 (X11;U;Linux i686;en-US;rv:1.9.0.3) Geco/2008092416 Firefox/3.0.3"
 UBUNTU_VERSION="$(lsb_release -c | sed 's/Codename://g' | xargs)"
@@ -26,11 +26,11 @@ main_source() {
     main_0
 }
 main_build() {
-    sudo apt install git build-essential manpages-dev \
+    sudo apt -y install git build-essential manpages-dev \
         make ffmpeg libssl-dev openssl net-tools vim xclip \
         curl wget screen gdb zip tree neofetch transmission \
         proxychains4 exiftool rename aria2 manpages-dev keychain \
-        lsb-core openssh-client openssh-server traceroute htop pigz -y
+        lsb-core openssh-client openssh-server traceroute htop pigz
 }
 main_newergcc() {
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -44,7 +44,7 @@ main_newergcc() {
     sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 750
 }
 main_cmake() {
-    sudo apt install apt-transport-https ca-certificates gnupg software-properties-common wget
+    sudo apt install -y apt-transport-https ca-certificates gnupg software-properties-common wget
     wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null
     sudo apt-add-repository "deb https://apt.kitware.com/ubuntu/ ${UBUNTU_VERSION} main"
     sudo apt update
@@ -52,24 +52,24 @@ main_cmake() {
     sudo apt-cache policy cmake-data
     # CMAKE_VERSION="3.19.5-0kitware1ubuntu20.04.1" # for ubuntu 2004
     CMAKE_VERSION="3.19.5-0kitware1" # for ubuntu 1804
-    sudo apt install cmake-data="${CMAKE_VERSION}" cmake="${CMAKE_VERSION}"
+    sudo apt -y install cmake-data="${CMAKE_VERSION}" cmake="${CMAKE_VERSION}"
     sudo apt-mark hold cmake cmake-data
 }
 main_python3() {
-    sudo apt install python3-pip
+    sudo apt install -y python3-pip
     sudo pip3 install numpy
 }
 main_jdk_mvn() {
     sudo add-apt-repository ppa:openjdk-r/ppa
     sudo apt-get update
-    sudo apt install openjdk-14-jdk openjdk-11-jdk openjdk-8-jdk maven gradle ant
+    sudo apt install -y openjdk-14-jdk openjdk-11-jdk openjdk-8-jdk maven gradle ant
     sudo update-alternatives --display java
     # sudo update-alternatives --config java
     # sudo update-alternatives --config javac
 }
 main_ohmyzsh() {
     # download oh-my-zsh
-    sudo apt install zsh -y
+    sudo apt install -y zsh
     sudo chsh -s "$(which zsh)"
     sudo usermod -s "$(which zsh)" "$(whoami)"
     if [ -d "${HOME}/.oh-my-zsh" ]; then
@@ -133,18 +133,18 @@ main_nodejs() {
     sudo apt install -y nodejs
 }
 main_opencv3() {
-    sudo apt install libopencv-dev
+    sudo apt install -y libopencv-dev
 }
 main_go() {
     # set go
     sudo add-apt-repository ppa:longsleep/golang-backports
     sudo apt update
-    sudo apt install golang-go
+    sudo apt install -y golang-go
 }
 main_pdftotext() {
-    sudo apt install libpoppler-cpp-dev pkg-config
-    pip3 install pdftotext         # then can import pdftotext
-    sudo apt install poppler-utils # then can run `pdftotext`
+    sudo apt install -y libpoppler-cpp-dev pkg-config
+    pip3 install pdftotext            # then can import pdftotext
+    sudo apt install -y poppler-utils # then can run `pdftotext`
 }
 main_texlive() {
     mkdir -p "${HOME}"/zsh_include
@@ -160,19 +160,19 @@ main_texlive() {
     cd "${origin}"
 }
 main_githubcli() {
-    sudo apt install software-properties-common
+    sudo apt install -y software-properties-common
     sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
     sudo apt-add-repository https://cli.github.com/packages
     sudo apt update
-    sudo apt install gh
+    sudo apt install -y gh
 }
 main_ryus() {
     #download python2 and ryus
-    sudo apt install python2 mininet python3-ryu iputils-arping -y
+    sudo apt install -y python2 mininet python3-ryu iputils-arping -y
     #`python2` names `python` in ubuntu1804 and elders.
 }
 function main_linguist() {
-    sudo apt install pkg-config libicu-dev zlib1g-dev libcurl4-openssl-dev libssl-dev ruby-dev
+    sudo apt install -y pkg-config libicu-dev zlib1g-dev libcurl4-openssl-dev libssl-dev ruby-dev
     gem sources --add https://mirrors.tuna.tsinghua.edu.cn/rubygems/ --remove https://rubygems.org/
     gem sources -l
     gem install github-linguist
@@ -212,7 +212,7 @@ main_vscode() {
     sudo rm microsoft.gpg
     ## Install
     sudo apt update
-    sudo apt install code
+    sudo apt install -y code
 }
 main_msedge() {
     ## Setup
@@ -221,7 +221,7 @@ main_msedge() {
     sudo rm microsoft.gpg
     ## Install
     sudo apt update
-    sudo apt install microsoft-edge-dev
+    sudo apt install -y microsoft-edge-dev
 }
 main_intelmkl() {
     origin="$(pwd)"
@@ -234,7 +234,7 @@ main_intelmkl() {
     echo "deb https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
     # or `sudo add-apt-repository "deb https://apt.repos.intel.com/oneapi all main"`
     sudo apt update
-    sudo apt install intel-oneapi-mkl intel-oneapi-mkl-devel
+    sudo apt install -y intel-oneapi-mkl intel-oneapi-mkl-devel
     cd "${origin}"
     rm -rf ./intelmkl
 }
@@ -250,20 +250,20 @@ main_cuda() {
     sudo apt install -y ./cuda/libcudnn8-dev_8.1.1.33-1+cuda10.2_amd64.deb
     sudo apt-key add /var/cuda-repo-10-2-local-10.2.89-440.33.01/7fa2af80.pub
     sudo apt update
-    sudo apt -y install cuda
+    sudo apt install -y cuda
 }
 main_caffe_ssd() {
     #! c***f is dead, do not use it anymore.
     sudo apt install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler \
         libopenblas-dev liblapack-dev libatlas-base-dev \
         libgflags-dev libgoogle-glog-dev liblmdb-dev
-    sudo apt install --no-install-recommends libboost-all-dev
+    sudo apt install -y --no-install-recommends libboost-all-dev
 }
 main_vmware() {
     #only for vmware
-    sudo apt install open-vm-tools -y
+    sudo apt install -y open-vm-tools
     # sudo apt install open-vm-tools-dkms -y
-    sudo apt install open-vm-tools-desktop -y
+    sudo apt install -y open-vm-tools-desktop
     {
         proxychains4 git clone https://github.com/rasa/vmware-tools-patches.git
         cd vmware-tools-patches
