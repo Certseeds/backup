@@ -9,7 +9,7 @@ $script = {
     "innounp",
     "jetbrains-toolbox"
     "kotlin",
-    "maven", "miniconda3", "mysql",
+    "maven", "miniconda3", "mysql", "mingit",
     "neatdownloadmanager", "neteasemusic", "nodejs", "nvm",
     "officetoolplus", "oh-my-posh3",
     "pdf-xchange-editor", "potplayer", "posh-git"
