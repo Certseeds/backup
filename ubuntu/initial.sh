@@ -6,7 +6,7 @@ set -eoux pipefail
 # @Author: nanoseeds
 # @Date: 2020-02-14 12:03:47
  # @LastEditors: nanoseeds
- # @LastEditTime: 2021-07-23 01:27:30
+ # @LastEditTime: 2021-07-24 11:23:48
 ###
 USER_AGENT="Mozilla/5.0 (X11;U;Linux i686;en-US;rv:1.9.0.3) Geco/2008092416 Firefox/3.0.3"
 UBUNTU_VERSION="$(lsb_release -c | sed 's/Codename://g' | xargs)"
@@ -19,7 +19,7 @@ main_0() {
     sudo apt update -y
     sudo apt upgrade -y
 }
-main_1() {
+main_source() {
     # backup so
     sudo mv /etc/apt/sources.list /etc/apt/sources.list.backup
     sudo cp "$(pwd)"/source_aliyun_1804.list /etc/apt/sources.list
@@ -57,25 +57,15 @@ main_cmake() {
 }
 main_python3() {
     sudo apt install python3-pip
-    mkdir -p "${HOME}"/.pip
-    pip_file_name="${HOME}/.pip/pip/conf"
-    if [[ -f "${pip_file_name}" ]]; then
-        mv "${pip_file_name}" "${pip_file_name}.back"
-    fi
-    ln -s "$(pwd)"/pip.conf "${pip_file_name}"
-    sudo chmod 0755 "${pip_file_name}"
     sudo pip3 install numpy
 }
 main_jdk_mvn() {
-    sudo apt install openjdk-11-jdk openjdk-8-jdk maven
-    mkdir -p "/etc/maven"
-    settings_xml="/etc/maven/settings.xml"
-    if [[ -f "${settings_xml}" ]]; then
-        mv "${settings_xml}" "${settings_xml}.backup"
-    fi
+    sudo add-apt-repository ppa:openjdk-r/ppa
+    sudo apt-get update
+    sudo apt install openjdk-14-jdk openjdk-11-jdk openjdk-8-jdk maven gradle ant
     sudo update-alternatives --display java
-    sudo update-alternatives --config java
-    sudo update-alternatives --config javac
+    # sudo update-alternatives --config java
+    # sudo update-alternatives --config javac
 }
 main_ohmyzsh() {
     # download oh-my-zsh
@@ -118,6 +108,39 @@ main_conda() {
     conda update --all
     #   conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=10.2 -c pytorch
 }
+main_anaconda() {
+    # anaconda
+    ANACONDA="Anaconda3-2020.07-Linux-x86_64.sh"
+    proxychains4 wget -c https://repo.anaconda.com/archive/"${ANACONDA}" \
+        --user-agent="${USER_AGENT}" \
+        --no-check-certificate
+    sudo chmod 0755 ./"${ANACONDA}"
+    sudo ./"${ANACONDA}"
+    rm ./"${ANACONDA}"
+    # TODO press enter && yes now
+    # TODO source ~/.zshrc
+}
+main_wsl_sshd_server() {
+    #wsl set port
+    # use 2222,3333 and so on.
+    sudo sed -i '/Port /c Port 2222' /etc/ssh/sshd_config
+    sudo sed -i '/ListenAddress 0.0.0.0/c ListenAddress 0.0.0.0' /etc/ssh/sshd_config
+    sudo sed -i '/PasswordAuthentication no/c PasswordAuthentication yes' /etc/ssh/sshd_config
+    sudo service ssh restart
+}
+main_nodejs() {
+    curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
+    sudo apt install -y nodejs
+}
+main_opencv3() {
+    sudo apt install libopencv-dev
+}
+main_go() {
+    # set go
+    sudo add-apt-repository ppa:longsleep/golang-backports
+    sudo apt update
+    sudo apt install golang-go
+}
 main_pdftotext() {
     sudo apt install libpoppler-cpp-dev pkg-config
     pip3 install pdftotext         # then can import pdftotext
@@ -143,66 +166,10 @@ main_githubcli() {
     sudo apt update
     sudo apt install gh
 }
-main_anaconda() {
-    # anaconda
-    ANACONDA="Anaconda3-2020.07-Linux-x86_64.sh"
-    proxychains4 wget -c https://repo.anaconda.com/archive/"${ANACONDA}" \
-        --user-agent="${USER_AGENT}" \
-        --no-check-certificate
-    sudo chmod 0755 ./"${ANACONDA}"
-    sudo ./"${ANACONDA}"
-    rm ./"${ANACONDA}"
-    # TODO press enter && yes now
-    # TODO source ~/.zshrc
-}
-
-main_6() {
-    #wsl set port
-    # use 2222,3333 and so on.
-    sudo sed -i '/Port /c Port 2222' /etc/ssh/sshd_config
-    sudo sed -i '/ListenAddress 0.0.0.0/c ListenAddress 0.0.0.0' /etc/ssh/sshd_config
-    sudo sed -i '/PasswordAuthentication no/c PasswordAuthentication yes' /etc/ssh/sshd_config
-    sudo service ssh restart
-}
-main_shellcheck() {
-    envi=$(pwd)
-    SHELLCHECK="shellcheck-latest.linux.x86_64.tar.xz"
-    cd "${HOME}"/
-    if [[ ! -d "${HOME}/tmp_install_folder/" ]]; then
-        mkdir -p "${HOME}"/tmp_install_folder/
-    else
-        rm -rf "${HOME}"/tmp_install_folder/
-    fi
-    proxychains4 wget -P "${HOME}"/tmp_install_folder/ \
-        https://github.com/koalaman/shellcheck/releases/download/latest/"${SHELLCHECK}" \
-        --user-agent="${USER_AGENT}" \
-        --no-check-certificate
-    # Extract
-    tar xvf "${HOME}"/tmp_install_folder/"${SHELLCHECK}" -C "${HOME}"/tmp_install_folder
-    # Make it globally available
-    sudo cp "${HOME}"/tmp_install_folder/shellcheck-latest/shellcheck /usr/bin/shellcheck
-    # Cleanup
-    rm -r "${HOME}"/tmp_install_folder
-    cd "${envi}"
-}
-main_opencv3() {
-    sudo apt install libopencv-dev
-}
-main_go() {
-    # set go
-    sudo add-apt-repository ppa:longsleep/golang-backports
-    sudo apt update
-    sudo apt install golang-go
-}
 main_ryus() {
     #download python2 and ryus
     sudo apt install python2 mininet python3-ryu iputils-arping -y
     #`python2` names `python` in ubuntu1804 and elders.
-}
-main_nodejs() {
-    main_version_of_nodejs=16
-    curl -sL https://deb.nodesource.com/setup_"${main_version_of_nodejs}".x | sudo -E bash -
-    sudo apt install -y nodejs
 }
 function main_linguist() {
     sudo apt install pkg-config libicu-dev zlib1g-dev libcurl4-openssl-dev libssl-dev ruby-dev
@@ -219,6 +186,11 @@ function main_sshkeygen() {
     #! DONT FORGET ADD PATH to zshrc
 }
 function main_gpgkeygen() {
+    gpg --full-generate-key
+    gpg --armor -o public-file.key --export keyId
+    gpg --armor -o private-file.key --export-secret-keys keyId
+    gpg --import public-file.key
+    gpg --allow-secret-key-import --import private-file.key
     gpg --list-secret-keys --keyid-format LONG
 }
 
