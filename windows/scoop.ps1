@@ -17,6 +17,10 @@ $script = {
     "spacesniffer", "steam", "sudo", "SourceCodePro-NF", "Source-Han-Sans-SC", "Source-Han-Serif-SC",
     "unxutils",
     "which";
+    #! do not use scoop install vscode, it's shim use cmd-code
+    #! so wsl can not open code-remote-wsl
+    # pay attention to install `git`, it will use it's own mingw's gpg,
+    # install of gpg that install by scoop, use `mingit` replace it.
     $scoop_bucket_list = "extras", "java", "nerd-fonts", "dorado https://github.com/chawyehsu/dorado";
     #Main-function
     function main {
