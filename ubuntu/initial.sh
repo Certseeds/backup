@@ -5,8 +5,8 @@ set -eoux pipefail
 # @Organization: SUSTech
 # @Author: nanoseeds
 # @Date: 2020-02-14 12:03:47
-# @LastEditors: nanoseeds
-# @LastEditTime: 2021-07-24 16:18:20
+ # @LastEditors: nanoseeds
+ # @LastEditTime: 2021-07-26 23:21:35
 ###
 USER_AGENT="Mozilla/5.0 (X11;U;Linux i686;en-US;rv:1.9.0.3) Geco/2008092416 Firefox/3.0.3"
 UBUNTU_VERSION="$(lsb_release -c | sed 's/Codename://g' | xargs)"
@@ -90,6 +90,14 @@ main_ohmyzsh() {
         sudo chmod 0755 "${HOME}"/.oh-my-zsh/plugins/zsh-syntax-highlighting
         sudo chmod 0755 "${HOME}"/.oh-my-zsh/plugins/zsh-autosuggestions
     }
+}
+main_mysql(){
+    wget https://repo.mysql.com//mysql-apt-config_0.8.18-1_all.deb
+    sudo dpkg -i mysql-apt-config_0.*.****_all.deb
+    sudo apt remove mysql-server # remove mysql-5.7
+    sudo apt update
+    sudo apt install mysql-server # remove mysql-8.0
+    mysql --version
 }
 main_miniconda() {
     mkdir -p "${HOME}"/zsh_include
