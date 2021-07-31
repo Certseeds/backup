@@ -6,7 +6,7 @@ set -eoux pipefail
 # @Author: nanoseeds
 # @Date: 2020-02-14 12:03:47
  # @LastEditors: nanoseeds
- # @LastEditTime: 2021-07-26 23:21:35
+ # @LastEditTime: 2021-08-01 00:06:38
 ###
 USER_AGENT="Mozilla/5.0 (X11;U;Linux i686;en-US;rv:1.9.0.3) Geco/2008092416 Firefox/3.0.3"
 UBUNTU_VERSION="$(lsb_release -c | sed 's/Codename://g' | xargs)"
@@ -33,7 +33,7 @@ main_build() {
         lsb-core openssh-client openssh-server traceroute htop pigz
 }
 main_newergcc() {
-    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
     sudo apt-get update
     GCC_VERSION=11
     sudo apt-get install gcc-"${GCC_VERSION}" g++-"${GCC_VERSION}"
@@ -46,7 +46,7 @@ main_newergcc() {
 main_cmake() {
     sudo apt install -y apt-transport-https ca-certificates gnupg software-properties-common wget
     wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null
-    sudo apt-add-repository "deb https://apt.kitware.com/ubuntu/ ${UBUNTU_VERSION} main"
+    sudo apt-add-repository "deb https://apt.kitware.com/ubuntu/ ${UBUNTU_VERSION} main" -y
     sudo apt update
     sudo apt-cache policy cmake
     sudo apt-cache policy cmake-data
@@ -60,7 +60,7 @@ main_python3() {
     sudo pip3 install numpy
 }
 main_jdk_mvn() {
-    sudo add-apt-repository ppa:openjdk-r/ppa
+    sudo add-apt-repository ppa:openjdk-r/ppa -y
     sudo apt-get update
     sudo apt install -y openjdk-14-jdk openjdk-11-jdk openjdk-8-jdk maven gradle ant
     sudo update-alternatives --display java
@@ -128,14 +128,6 @@ main_anaconda() {
     # TODO press enter && yes now
     # TODO source ~/.zshrc
 }
-main_wsl_sshd_server() {
-    #wsl set port
-    # use 2222,3333 and so on.
-    sudo sed -i '/Port /c Port 2222' /etc/ssh/sshd_config
-    sudo sed -i '/ListenAddress 0.0.0.0/c ListenAddress 0.0.0.0' /etc/ssh/sshd_config
-    sudo sed -i '/PasswordAuthentication no/c PasswordAuthentication yes' /etc/ssh/sshd_config
-    sudo service ssh restart
-}
 main_nodejs() {
     curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
     sudo apt install -y nodejs
@@ -145,7 +137,7 @@ main_opencv3() {
 }
 main_go() {
     # set go
-    sudo add-apt-repository ppa:longsleep/golang-backports
+    sudo add-apt-repository ppa:longsleep/golang-backports -y
     sudo apt update
     sudo apt install -y golang-go
 }
@@ -170,7 +162,7 @@ main_texlive() {
 main_githubcli() {
     sudo apt install -y software-properties-common
     sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
-    sudo apt-add-repository https://cli.github.com/packages
+    sudo apt-add-repository https://cli.github.com/packages -y
     sudo apt update
     sudo apt install -y gh
 }
