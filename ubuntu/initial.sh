@@ -6,7 +6,7 @@ set -eoux pipefail
 # @Author: nanoseeds
 # @Date: 2020-02-14 12:03:47
  # @LastEditors: nanoseeds
- # @LastEditTime: 2021-08-01 00:06:38
+ # @LastEditTime: 2021-08-14 17:12:48
 ###
 USER_AGENT="Mozilla/5.0 (X11;U;Linux i686;en-US;rv:1.9.0.3) Geco/2008092416 Firefox/3.0.3"
 UBUNTU_VERSION="$(lsb_release -c | sed 's/Codename://g' | xargs)"
@@ -50,8 +50,8 @@ main_cmake() {
     sudo apt update
     sudo apt-cache policy cmake
     sudo apt-cache policy cmake-data
-    # CMAKE_VERSION="3.19.5-0kitware1ubuntu20.04.1" # for ubuntu 2004
-    CMAKE_VERSION="3.19.5-0kitware1" # for ubuntu 1804
+    # CMAKE_VERSION="3.20.5-0kitware1ubuntu20.04.1" # for ubuntu 2004
+    CMAKE_VERSION="3.20.5-0kitware1" # for ubuntu 1804
     sudo apt -y install cmake-data="${CMAKE_VERSION}" cmake="${CMAKE_VERSION}"
     sudo apt-mark hold cmake cmake-data
 }
