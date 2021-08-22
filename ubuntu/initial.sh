@@ -6,7 +6,7 @@ set -eoux pipefail
 # @Author: nanoseeds
 # @Date: 2020-02-14 12:03:47
  # @LastEditors: nanoseeds
- # @LastEditTime: 2021-08-14 17:12:48
+ # @LastEditTime: 2021-08-22 18:07:26
 ###
 USER_AGENT="Mozilla/5.0 (X11;U;Linux i686;en-US;rv:1.9.0.3) Geco/2008092416 Firefox/3.0.3"
 UBUNTU_VERSION="$(lsb_release -c | sed 's/Codename://g' | xargs)"
@@ -46,7 +46,7 @@ main_newergcc() {
 main_cmake() {
     sudo apt install -y apt-transport-https ca-certificates gnupg software-properties-common wget
     wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null
-    sudo apt-add-repository "deb https://apt.kitware.com/ubuntu/ ${UBUNTU_VERSION} main" -y
+    sudo add-apt-repository "deb https://apt.kitware.com/ubuntu/ ${UBUNTU_VERSION} main" -y
     sudo apt update
     sudo apt-cache policy cmake
     sudo apt-cache policy cmake-data
@@ -162,7 +162,7 @@ main_texlive() {
 main_githubcli() {
     sudo apt install -y software-properties-common
     sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
-    sudo apt-add-repository https://cli.github.com/packages -y
+    sudo add-apt-repository https://cli.github.com/packages -y
     sudo apt update
     sudo apt install -y gh
 }
@@ -203,7 +203,7 @@ main_sshd() {
 }
 
 main_microsoft() {
-    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >microsoft.gpg
+    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
     sudo install -o root -g root -m 0644 microsoft.gpg /etc/apt/trusted.gpg.d/
 }
 main_vscode() {
@@ -222,6 +222,9 @@ main_msedge() {
     ## Install
     sudo apt update
     sudo apt install -y microsoft-edge-dev
+}
+main_clang_format(){
+    sudo apt install clang-format-10
 }
 main_intelmkl() {
     origin="$(pwd)"
