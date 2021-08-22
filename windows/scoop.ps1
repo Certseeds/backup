@@ -5,11 +5,11 @@ $script = {
     "cmake", "colortool",
     "dark", "dismplusplus",
     "everything", "exiftool", "eartrumpet"
-    "gh", "github", "go", "gpg", "gradle"
+    "gh", "github", "go", "git", "gradle"
     "innounp",
     "jetbrains-toolbox"
     "kotlin",
-    "maven", "miniconda3", "mysql", "mingit",
+    "maven", "miniconda3", "mysql",
     "neatdownloadmanager", "neteasemusic", "nodejs", "nvm",
     "officetoolplus", "oh-my-posh3",
     "pdf-xchange-editor", "potplayer", "posh-git"
@@ -19,8 +19,7 @@ $script = {
     "which";
     #! do not use scoop install vscode, it's shim use cmd-code
     #! so wsl can not open code-remote-wsl
-    # pay attention to install `git`, it will use it's own mingw's gpg,
-    # install of gpg that install by scoop, use `mingit` replace it.
+    # pay attention to install `git`, it will use it's own mingw's gpg
     $scoop_bucket_list = "extras", "java", "nerd-fonts", "dorado https://github.com/chawyehsu/dorado";
     #Main-function
     function main {
