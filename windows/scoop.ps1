@@ -71,6 +71,9 @@ $script = {
         set-executionpolicy remotesigned -scope currentuser
         iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
     }
+    function ssh_agent {
+        Get-Service -Name ssh-agent | Set-Service -StartupType Automatic
+    }
     function rustupsetup {
         rustup default stable
     }
