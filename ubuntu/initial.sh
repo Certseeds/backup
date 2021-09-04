@@ -6,7 +6,7 @@ set -eoux pipefail
 # @Author: nanoseeds
 # @Date: 2020-02-14 12:03:47
  # @LastEditors: nanoseeds
- # @LastEditTime: 2021-08-22 18:07:26
+ # @LastEditTime: 2021-09-04 21:30:32
 ###
 USER_AGENT="Mozilla/5.0 (X11;U;Linux i686;en-US;rv:1.9.0.3) Geco/2008092416 Firefox/3.0.3"
 UBUNTU_VERSION="$(lsb_release -c | sed 's/Codename://g' | xargs)"
@@ -92,7 +92,7 @@ main_ohmyzsh() {
     }
 }
 main_mysql(){
-    wget https://repo.mysql.com//mysql-apt-config_0.8.18-1_all.deb
+    wget https://repo.mysql.com//mysql-apt-config_0.8.19-1_all.deb
     sudo dpkg -i mysql-apt-config_0.*.****_all.deb
     sudo apt remove mysql-server # remove mysql-5.7
     sudo apt update
