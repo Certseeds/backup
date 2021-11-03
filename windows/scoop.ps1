@@ -1,7 +1,7 @@
 $script = {
     $appList =
     "7zip",
-    "adopt11-hotspot", "adopt14-hotspot", "adopt8-hotspot", "ant", "aria2",
+    "temurin8-jdk", "temurin11-jdk", "temurin17-jdk", "ant", "aria2",
     "cmake", "colortool",
     "dark", "dismplusplus",
     "everything", "exiftool", "eartrumpet"
@@ -10,7 +10,7 @@ $script = {
     "jetbrains-toolbox"
     "kotlin",
     "maven", "miniconda3", "mysql",
-    "neatdownloadmanager", "neteasemusic", "nodejs", "nvm",
+    "neatdownloadmanager", "neteasemusic", "nodejs-lts", "nvm",
     "officetoolplus", "oh-my-posh3",
     "pdf-xchange-editor", "potplayer", "posh-git"
     "rufus", "rustup-msvc",
