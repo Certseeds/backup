@@ -18,6 +18,8 @@
 .g_m_o_bs
 .gs_file
 .gs_fs0
+.gs_fs3
+.gs
 .jd_Read
 .jds
 .knights
@@ -104,7 +106,9 @@ cache
 cmmap
 com.android.providers.downloads.ui
 com.miui.voiceassist
-com.netease
+com.miui.guardprovider_TMP_TMS
+com.netease.cloudmusic
+com.tencent.mobileqq
 com.tencent.tim
 data
 dcctp
@@ -144,3 +148,15 @@ zhihu
 bytedance
 Lark
 LenovoClub
+ByteDownload
+Catfish
+ccvoice
+cmb
+cmb.db
+unite
+qqmusiclite
+qqstory
+qsvf
+statistic
+tbs
+system

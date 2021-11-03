@@ -6,7 +6,7 @@ set -eoux pipefail
 # @Author: nanoseeds
 # @Date: 2020-02-14 12:03:47
  # @LastEditors: nanoseeds
- # @LastEditTime: 2021-09-04 21:30:32
+ # @LastEditTime: 2021-10-24 11:59:33
 ###
 USER_AGENT="Mozilla/5.0 (X11;U;Linux i686;en-US;rv:1.9.0.3) Geco/2008092416 Firefox/3.0.3"
 UBUNTU_VERSION="$(lsb_release -c | sed 's/Codename://g' | xargs)"
@@ -45,6 +45,7 @@ main_newergcc() {
 }
 main_cmake() {
     sudo apt install -y apt-transport-https ca-certificates gnupg software-properties-common wget
+    wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null
     wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null
     sudo add-apt-repository "deb https://apt.kitware.com/ubuntu/ ${UBUNTU_VERSION} main" -y
     sudo apt update
