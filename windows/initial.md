@@ -4,7 +4,7 @@
  * @Author: nanoseeds
  * @Date: 2020-08-21 15:14:03
  * @LastEditors: nanoseeds
- * @LastEditTime: 2021-07-21 23:41:56
+ * @LastEditTime: 2021-11-06 21:55:35
  * @License: CC-BY-NC-SA_V4_0 or any later version 
  -->
 
@@ -23,10 +23,10 @@
 |   9   |           `scoop install officetoolplus`,装office            |
 |  10   |                         wsl settings                         |
 |  11   |    `scoop install jetbrains-toolbox`,装clion,idea,etc...     |
-|  12   |         `scoop install adopt11/14/8-hotspot`,配idea          |
+|  12   |          `scoop install temurin8/11/17-jdk`,配idea           |
 |  13   |             `scoop install miniconda3`,配pycharm             |
 |  14   |                 `scoop install neteasemusic`                 |
-|  15   |                   `scoop insatll gpg4win`)                   |
+|  15   |                   `scoop insatll gpg4win`                    |
 |  16   |               `scoop install 7-zip potplayer`                |
 |  17   |                     安装vmware,调虚拟机                      |
 
