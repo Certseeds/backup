@@ -11,7 +11,7 @@ $script = {
     "kotlin",
     "maven", "miniconda3", "mysql",
     "neatdownloadmanager", "neteasemusic", "nodejs-lts", "nvm",
-    "officetoolplus", "oh-my-posh3",
+    "officetoolplus", "oh-my-posh",
     "pdf-xchange-editor", "potplayer", "posh-git"
     "rufus", "rustup-msvc",
     "spacesniffer", "steam", "sudo", "SourceCodePro-NF", "Source-Han-Sans-SC", "Source-Han-Serif-SC",
