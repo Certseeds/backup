@@ -8,6 +8,7 @@ set -eoux pipefail
  # @LastEditors: nanoseeds
  # @LastEditTime: 2021-10-24 11:59:33
 ###
+depercated="true" # no more feature will be add to this file
 USER_AGENT="Mozilla/5.0 (X11;U;Linux i686;en-US;rv:1.9.0.3) Geco/2008092416 Firefox/3.0.3"
 UBUNTU_VERSION="$(lsb_release -c | sed 's/Codename://g' | xargs)"
 finish() {

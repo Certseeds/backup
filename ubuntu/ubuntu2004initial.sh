@@ -5,8 +5,8 @@ set -eoux pipefail
 # @Organization: SUSTech
 # @Author: nanoseeds
 # @Date: 2020-02-14 12:03:47
- # @LastEditors: nanoseeds
- # @LastEditTime: 2021-09-04 21:44:36
+# @LastEditors: nanoseeds
+# @LastEditTime: 2021-09-04 21:44:36
 ###
 USER_AGENT="Mozilla/5.0 (X11;U;Linux i686;en-US;rv:1.9.0.3) Geco/2008092416 Firefox/3.0.3"
 UBUNTU_VERSION="$(lsb_release -c | sed 's/Codename://g' | xargs)"
@@ -20,7 +20,8 @@ main_0() {
 main_source() {
     # backup so
     sudo mv /etc/apt/sources.list /etc/apt/sources.list.backup
-    echo "deb http://mirrors.163.com/debian/ bullseye main contrib non-free" | sudo tee /etc/apt/sources.list > /dev/null
+    echo "deb http://mirrors.aliyun.com/ubuntu/ focal main restricted" |
+        sudo tee /etc/apt/sources.list >/dev/null
     main_0
 }
 main_build() {
@@ -32,10 +33,16 @@ main_build() {
 }
 main_jdk_mvn() {
     sudo apt install apt-transport-https ca-certificates wget dirmngr gnupg software-properties-common
-    wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
-    sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
+    wget https://packages.adoptium.net/artifactory/api/gpg/key/public \
+        -O adoptium.gpg.txt
+    cat $(pwd)/adoptium.gpg.txt |
+        gpg --dearmor | sudo tee adoptium.gpg
+    sudo install -o root -g root -m 0644 adoptium.gpg /etc/apt/trusted.gpg.d/
+    sudo install -o root -g root -m 0644 adoptium.gpg.txt /etc/apt/trusted.gpg.d/
+    echo "deb [signed-by=/etc/apt/trusted.gpg.d/adoptium.gpg.txt] https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" |
+        sudo tee /etc/apt/sources.list.d/adoptium.list
     sudo apt update
-    sudo apt install -y adoptopenjdk-8-hotspot openjdk-11-jdk openjdk-17-jdk maven gradle ant
+    sudo apt install -y termurin-8-jdk termurin-11-jdk termurin-17-jdk maven gradle ant
     sudo update-alternatives --display java
     # sudo update-alternatives --config java
     # sudo update-alternatives --config javac
@@ -51,7 +58,7 @@ main_python3() {
 # 笔记本合盖 /etc/systemd/logind.conf
 # #HandleLidSwitch=suspend -> #HandleLidSwitch=lock
 # *power
-# 安装网卡驱动 关闭安全启动 
+# 安装网卡驱动 关闭安全启动
 main_ohmyzsh() {
     # download oh-my-zsh
     sudo apt install -y zsh
@@ -75,14 +82,6 @@ main_ohmyzsh() {
         sudo chmod 0755 "${HOME}"/.oh-my-zsh/plugins/zsh-syntax-highlighting
         sudo chmod 0755 "${HOME}"/.oh-my-zsh/plugins/zsh-autosuggestions
     }
-}
-main_mysql(){
-    wget https://repo.mysql.com/mysql-apt-config_0.8.19-1_all.deb
-    sudo dpkg -i mysql-apt-config_0.*.****_all.deb
-    # sudo apt remove mysql-server # remove mysql-5.7
-    sudo apt update
-    sudo apt install mysql-server # remove mysql-8.0
-    mysql --version
 }
 main_nodejs() {
     curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
@@ -109,13 +108,15 @@ main_sshd() {
     sudo chmod 0600 "${HOME}"/.ssh/*
 }
 main_microsoft() {
-    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+    wget https://packages.microsoft.com/keys/microsoft.asc -O microsoft.gpg.txt
+    cat $(pwd)/microsoft.gpg.txt | gpg --dearmor >microsoft.gpg
     sudo install -o root -g root -m 0644 microsoft.gpg /etc/apt/trusted.gpg.d/
+    sudo install -o root -g root -m 0644 microsoft.gpg.txt /etc/apt/trusted.gpg.d/
 }
 main_vscode() {
     main_microsoft
-    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-    sudo rm microsoft.gpg
+    echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" |
+        sudo tee /etc/apt/sources.list.d/microsoft.list
     ## Install
     sudo apt update
     sudo apt install -y code
@@ -123,18 +124,22 @@ main_vscode() {
 main_msedge() {
     ## Setup
     main_microsoft
-    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
-    sudo rm microsoft.gpg
+    echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" |
+        sudo tee -a /etc/apt/sources.list.d/microsoft.list
     ## Install
     sudo apt update
     sudo apt install -y microsoft-edge-dev
 }
-main_clang_format(){
+main_clang_format() {
     sudo apt install clang-format-10
 }
-main_docker(){
-    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+main_docker() {
+    sudo wget https://download.docker.com/linux/debian/gpg -O /etc/apt/trusted.gpg.d/docker.gpg.txt
+    sudo apt-key --keyring /etc/apt/trusted.gpg.d/docker.gpg add /etc/apt/trusted.gpg.d/docker.gpg.txt
+    echo "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" |
+        sudo tee /etc/apt/sources.list.d/docker.list
+    echo "deb-src [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" |
+        sudo tee -a /etc/apt/sources.list.d/docker.list
     sudo apt update
     sudo apt install docker-ce
     sudo systemctl status docker
