@@ -18,7 +18,6 @@ main() {
         echo "${line}" | md5sum | base64 >>"./${line}"
         echo "${line}" | sha1sum | base64 >>"./${line}"
         echo "${line}" | sha256sum | md5sum >>"./${line}"
-
     done
     cd "${origin_path}"
 }
