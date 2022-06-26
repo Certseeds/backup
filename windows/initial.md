@@ -1,11 +1,9 @@
 <!--
  * @Github: https://github.com/Certseeds/backup
- * @Organization: SUSTech
  * @Author: nanoseeds
  * @Date: 2020-08-21 15:14:03
  * @LastEditors: nanoseeds
- * @LastEditTime: 2021-11-06 21:55:35
- * @License: CC-BY-NC-SA_V4_0 or any later version 
+ * @License: CC-BY-NC-SA_V4_0 or any later version
  -->
 
 # meaningless title
@@ -13,13 +11,13 @@
 | Order |                            Action                            |
 | :---: | :----------------------------------------------------------: |
 |   0   |                            重装.                             |
-|   2   |                          安装梯子。                          |
+|   2   |                 确认可以正常执行之后的流程。                 |
 |   3   |                          设置浏览器                          |
-|   4   | 安装scoop.`scoop install github git`,设置,clone dotfiles库。 |
+|   4   | 安装scoop.`scoop install git`,设置,clone dotfiles库。 |
 |   5   |                 安装vscode,开始记录装机过程.                 |
 |   6   |           `scoop install diskplusplus`, 开始调系统           |
-|   7   |                  安装fillder,解锁uwp的梯子.                  |
-|   8   |                安装一票uwp应用,顺带解锁梯子。                |
+|   7   |                  安装fillder,解锁uwp的网络问题.                  |
+|   8   |                安装一票uwp应用,顺带解锁网络问题。                |
 |   9   |           `scoop install officetoolplus`,装office            |
 |  10   |                         wsl settings                         |
 |  11   |    `scoop install jetbrains-toolbox`,装clion,idea,etc...     |
