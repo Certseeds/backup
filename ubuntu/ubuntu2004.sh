@@ -128,17 +128,17 @@ main_msedge() {
         sudo tee -a /etc/apt/sources.list.d/microsoft.list
     ## Install
     sudo apt update
-    sudo apt install -y microsoft-edge-dev
+    sudo apt install -y microsoft-edge-stable
 }
 main_clang_format() {
     sudo apt install clang-format-10
 }
 main_docker() {
-    sudo wget https://download.docker.com/linux/debian/gpg -O /etc/apt/trusted.gpg.d/docker.gpg.txt
-    sudo apt-key --keyring /etc/apt/trusted.gpg.d/docker.gpg add /etc/apt/trusted.gpg.d/docker.gpg.txt
-    echo "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" |
+    sudo wget https://download.docker.com/linux/ubuntu/gpg -O /etc/apt/trusted.gpg.d/docker.ubt.gpg.txt
+    sudo apt-key --keyring /etc/apt/trusted.gpg.d/docker.ubt.gpg add /etc/apt/trusted.gpg.d/docker.ubt.gpg.txt
+    echo "deb     [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" |
         sudo tee /etc/apt/sources.list.d/docker.list
-    echo "deb-src [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" |
+    echo "deb-src [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" |
         sudo tee -a /etc/apt/sources.list.d/docker.list
     sudo apt update
     sudo apt install docker-ce
