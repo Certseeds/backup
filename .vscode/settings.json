@@ -5,83 +5,10 @@
     // "editor.fontSize": 14,// for ubuntu
     // "debug.console.fontSize": 14,// for ubuntu
     // "window.zoomLevel": 1.0,// for ubuntu
-    "fileheader.configObj": {
-        "createFileTime": true,
-        "language": {
-            "gitattributes": {
-                "head": "### ",
-                "middle": "# @",
-                "end": "### "
-            },
-            "gitignore": {
-                "head": "### ",
-                "middle": "## @",
-                "end": "### "
-            },
-            "md": {
-                "head": "<!--",
-                "middle": " * @",
-                "end": " * @License: CC-BY-NC-SA_V4_0 or any later version \n -->"
-            }
-        },
-        "autoAdd": true,
-        "autoAddLine": 100,
-        "autoAlready": true,
-        "annotationStr": {
-            "head": "/*",
-            "middle": " * @",
-            "end": " */",
-            "use": false
-        },
-        "headInsertLine": {
-            "php": 2,
-            "py": 0,
-            "java": 0,
-            "c": 0,
-            "cpp": 0,
-            "sh": 0,
-            "h": 0
-        },
-        "beforeAnnotation": {
-            "py": "#!/usr/bin/env python3\n# coding=utf-8",
-            "sh": "#!/bin/bash\nset -eoux pipefail"
-        },
-        "afterAnnotation": {},
-        "specialOptions": {},
-        "switch": {
-            "newlineAddAnnotation": true
-        },
-        "prohibitAutoAdd": [
-            "json",
-            "md",
-            "wav",
-            "xml"
-        ],
-        "moveCursor": true,
-        "dateFormat": "YYYY-MM-DD HH:mm:ss",
-        "atSymbol": "@",
-        "atSymbolObj": {},
-        "colon": ": ",
-        "colonObj": {},
-        "filePathColon": "路径分隔符替换",
-        "showErrorMessage": false,
-        "wideSame": false,
-        "wideNum": 13,
-        "CheckFileChange": false
-    },
-    "fileheader.customMade": {
-        "Github": "https://github.com/Certseeds/backup",
-        "Organization": "SUSTech",
-        "Author": "nanoseeds",
-        "Date": "Do not edit",
-        "LastEditors": "nanoseeds",
-        "LastEditTime": "Do not edit"
-    },
     "git.ignoreLimitWarning": true,
     "shellcheck.enable": true,
     "shellcheck.executablePath": "/usr/bin/shellcheck",
     "shellcheck.run": "onType",
-    "shellcheck.useWSL": true,
     "shellcheck.enableQuickFix": true,
     "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0}",
     "todo-tree.general.tags": [
@@ -218,4 +145,17 @@
     "latex-workshop.latex.autoClean.run": "onFailed",
     "latex-workshop.latex.recipe.default": "lastUsed",
     "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+    "python.formatting.provider": "black",
+    "search.useIgnoreFiles": false,
+    "editor.linkedEditing": true,
+    "html.autoClosingTags": true,
+    "javascript.autoClosingTags": true,
+    "javascript.suggest.autoImports": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "typescript.autoClosingTags": true,
+    "typescript.suggest.autoImports": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "files.trimTrailingWhitespace": true,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": true,
 }
