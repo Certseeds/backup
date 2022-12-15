@@ -1,12 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -eoux pipefail
 ###
 # @Github: https://github.com/Certseeds/backup
-# @Organization: SUSTech
 # @Author: nanoseeds
-# @Date: 2020-08-21 18:23:17
- # @LastEditors: nanoseeds
- # @LastEditTime: 2021-03-23 20:51:41
+# @CreateDate: 2020-08-21 18:23:17
 ###
 
 SHELL_FOLDER=$(

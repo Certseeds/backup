@@ -1,12 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -eoux pipefail
 ###
 # @Github: https://github.com/Certseeds/backup
-# @Organization: SUSTech
 # @Author: nanoseeds
-# @Date: 2020-02-14 12:03:47
-# @LastEditors: nanoseeds
-# @LastEditTime: 2021-09-04 21:44:36
+# @CreateDate: 2020-02-14 12:03:47
 ###
 USER_AGENT="Mozilla/5.0 (X11;U;Linux i686;en-US;rv:1.9.0.3) Geco/2008092416 Firefox/3.0.3"
 UBUNTU_VERSION="$(lsb_release -c | sed 's/Codename://g' | xargs)"

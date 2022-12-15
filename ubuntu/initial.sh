@@ -1,12 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -eoux pipefail
 ###
 # @Github: https://github.com/Certseeds/backup
-# @Organization: SUSTech
 # @Author: nanoseeds
-# @Date: 2020-02-14 12:03:47
- # @LastEditors: nanoseeds
- # @LastEditTime: 2021-10-24 11:59:33
+# @CreateDate: 2020-02-14 12:03:47
 ###
 depercated="true" # no more feature will be add to this file
 USER_AGENT="Mozilla/5.0 (X11;U;Linux i686;en-US;rv:1.9.0.3) Geco/2008092416 Firefox/3.0.3"
@@ -36,7 +33,7 @@ main_build() {
 main_newergcc() {
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
     sudo apt-get update
-    GCC_VERSION=11
+    local GCC_VERSION=11
     sudo apt-get install gcc-"${GCC_VERSION}" g++-"${GCC_VERSION}"
     gcc-"${GCC_VERSION}" --version
     sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 1110
@@ -53,7 +50,7 @@ main_cmake() {
     sudo apt-cache policy cmake
     sudo apt-cache policy cmake-data
     # CMAKE_VERSION="3.20.5-0kitware1ubuntu20.04.1" # for ubuntu 2004
-    CMAKE_VERSION="3.20.5-0kitware1" # for ubuntu 1804
+    local CMAKE_VERSION="3.20.5-0kitware1" # for ubuntu 1804
     sudo apt -y install cmake-data="${CMAKE_VERSION}" cmake="${CMAKE_VERSION}"
     sudo apt-mark hold cmake cmake-data
 }
@@ -103,7 +100,7 @@ main_mysql(){
 }
 main_miniconda() {
     mkdir -p "${HOME}"/zsh_include
-    MINICONDA="Miniconda3-py39_4.9.2-Linux-x86_64.sh"
+    local MINICONDA="Miniconda3-py39_4.9.2-Linux-x86_64.sh"
     wget -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/"${MINICONDA}" \
         --user-agent="${USER_AGENT}" \
         --no-check-certificate
@@ -120,7 +117,7 @@ main_conda() {
 }
 main_anaconda() {
     # anaconda
-    ANACONDA="Anaconda3-2020.07-Linux-x86_64.sh"
+    local ANACONDA="Anaconda3-2020.07-Linux-x86_64.sh"
     proxychains4 wget -c https://repo.anaconda.com/archive/"${ANACONDA}" \
         --user-agent="${USER_AGENT}" \
         --no-check-certificate
@@ -150,7 +147,7 @@ main_pdftotext() {
 }
 main_texlive() {
     mkdir -p "${HOME}"/zsh_include
-    origin="$(pwd)"
+    local origin="$(pwd)"
     mkdir -p ./texlive
     mkdir -p /media/tex
     sudo mount -t auto -o loop ./texlive.iso /media/tex
@@ -181,8 +178,8 @@ function main_linguist() {
     # now $(github-linguist --breakdown) can use
 }
 function main_sshkeygen() {
-    pre_path="${HOME}/.ssh/"
-    file_name="${pre_path}"/YOUR_FILE_NAME
+    local pre_path="${HOME}/.ssh/"
+    local file_name="${pre_path}"/YOUR_FILE_NAME
     ssh-keygen -t ed25519 -C "51754303+Certseeds@users.noreply.github.com" -f "${file_name}"
     xclip -selection clipboard <"${file_name}".pub
     #! DONT FORGET ADD PATH to zshrc
@@ -229,7 +226,7 @@ main_clang_format(){
     sudo apt install clang-format-10
 }
 main_intelmkl() {
-    origin="$(pwd)"
+    local origin="$(pwd)"
     mkdir -p ./intelmkl
     cd ./intelmkl
     wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB \
