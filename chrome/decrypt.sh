@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 set -euox pipefail
-main(){
-    ENCRY_PUBKEY=""
-    FILENAME=my-ublock-backup.txt &&  gpg -dr ${ENCRY_PUBKEY} -v ./${FILENAME}.gpg > ./${FILENAME}
-    FILENAME=OmegaOptions.bak &&  gpg -dr ${ENCRY_PUBKEY} -v ./${FILENAME}.gpg > ./${FILENAME}
-    FILENAME=OmegaProfile_auto_switch.pac &&  gpg -dr ${ENCRY_PUBKEY} -v ./${FILENAME}.gpg > ./${FILENAME}
-    FILENAME=PrivacyBadger_user_data.json &&  gpg -dr ${ENCRY_PUBKEY} -v ./${FILENAME}.gpg > ./${FILENAME}
-    FILENAME=tampermonkey-backup-chrome.txt &&  gpg -dr ${ENCRY_PUBKEY} -v ./${FILENAME}.gpg > ./${FILENAME}
+main() {
+    local ENCRY_PUBKEY=""
+    local FILENAME=my-ublock-backup.json &&
+        gpg -dr ${ENCRY_PUBKEY} -v ./${FILENAME}.gpg >./${FILENAME}
+    local FILENAME=OmegaOptions.bak.json &&
+        gpg -dr ${ENCRY_PUBKEY} -v ./${FILENAME}.gpg >./${FILENAME}
+    local FILENAME=OmegaProfile_auto_switch.pac.js &&
+        gpg -dr ${ENCRY_PUBKEY} -v ./${FILENAME}.gpg >./${FILENAME}
+    local FILENAME=tampermonkey-backup-chrome.json &&
+        gpg -dr ${ENCRY_PUBKEY} -v ./${FILENAME}.gpg >./${FILENAME}
 }
 main
