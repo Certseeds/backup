@@ -145,6 +145,13 @@ main_docker() {
     sudo usermod -aG docker "${USER}"
     docker run hello-world
 }
+main_podman(){
+    sudo apt-get install podman
+    sudo apt-get install dbus-user-session
+    podman --version
+    podamn run hello-world
+}
+
 main_114514() {
     sudo apt autoremove
     sudo apt autoclean
