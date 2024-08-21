@@ -8,19 +8,19 @@
  -->
 # backup
 
-模板,规则,操作以及设定.
+主要放一些脚本和sign.encry文件.
 
 1. All code based on AGPL3.0(or any later version).
 
 2. All *.md files are based on CC-BY-NC-SA-4.0(or any later version).
 
-[![CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-orange)][cc_by_nc_sa_4_0]  
+[![CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-orange)][cc_by_nc_sa_4_0]
 
-[![language](https://img.shields.io/github/languages/top/Certseeds/backup?color=%23330099)]() 
+[![language](https://img.shields.io/github/languages/top/Certseeds/backup?color=%23330099)]()
 
-[![commit activity](https://img.shields.io/github/commit-activity/m/Certseeds/backup?color=%230066FF)](https://github.com/Certseeds/backup/commits/master) 
+[![commit activity](https://img.shields.io/github/commit-activity/m/Certseeds/backup?color=%230066FF)](https://github.com/Certseeds/backup/commits/master)
 
-[![code size](https://img.shields.io/github/languages/code-size/Certseeds/backup?color=%230099CC)]() 
+[![code size](https://img.shields.io/github/languages/code-size/Certseeds/backup?color=%230099CC)]()
 
 [![repo size](https://img.shields.io/github/repo-size/Certseeds/backup?color=%23CC9900)]()
 

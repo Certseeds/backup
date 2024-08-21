@@ -51,7 +51,7 @@ HubsSidebarEnabled: false
 4. 把scoop复制过来
 
 ``` log
-重装系统之前,先完整复制用户目录下的scoop文件夹到别的地方
+重装系统之前,先完整复制用户目录下的scoop文件夹到非系统盘
 重装系统之后,将scoop文件夹粘贴回去用户目录
 在环境变量设置中,新建一个用户变量,名字为SCOOP,值为当前scoop文件夹的地址,即:
 > C:\Users\xxxx\scoop
