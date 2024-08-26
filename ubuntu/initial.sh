@@ -95,8 +95,18 @@ function main_sshkeygen() {
 }
 function main_gpgkeygen() {
     gpg --full-generate-key
-    gpg --armor -o public-file.key --export keyId
-    gpg --armor -o private-file.key --export-secret-keys keyId
+    gpg --output main.pri.key \
+        --armor \
+        --export-secret-keys keyId
+    gpg --output main.pri.key.pub \
+        --armor \
+        --export keyId
+    gpg --output sub.pri.key \
+        --armor \
+        --export-secret-subkeys keyId!
+    gpg --output sub.pri.key.pub \
+        --armor \
+        --export keyId!
     gpg --import public-file.key
     gpg --allow-secret-key-import --import private-file.key
     gpg --list-secret-keys --keyid-format LONG
