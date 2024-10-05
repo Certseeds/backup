@@ -1,12 +1,11 @@
-### 
+###
  # @Github: https://github.com/Certseeds/backup
- # @Organization: SUSTech
  # @Author: nanoseeds
  # @Date: 2020-02-04 13:17:43
 # @LastEditors: nanoseeds
 # @LastEditTime: 2020-09-12 22:48:23
-### 
-##  generate it by 
+###
+##  generate it by
 ##  https://www.richie-bendall.ml/gitattributes-generator/
 * text=auto
 
@@ -25,7 +24,7 @@
 *.flac binary
 *.FLAC binary
 
-# java 
+# java
 # Java sources
 *.java          text diff=java eol=lf
 *.gradle        text diff=java
@@ -81,7 +80,7 @@
 # ``shelve``, ``marshal``, ``anydbm``, & ``bsddb``
 # (among others).
 
-# c & cpp  
+# c & cpp
 # Sources
 *.c     text diff=c
 *.cc    text diff=cpp

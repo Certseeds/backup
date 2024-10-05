@@ -1,6 +1,5 @@
 <!--
  * @Github: https://github.com/Certseeds/backup
- * @Organization: SUSTech
  * @Author: nanoseeds
  * @Date: 2020-02-04 13:08:54
  * @LastEditors: nanoseeds
