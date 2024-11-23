@@ -65,7 +65,6 @@ Lanthanum
 Lanthanum_v2
 Lark
 LenovoClub
-LenovoClub
 MXShare
 MiMarket
 Mob
@@ -147,8 +146,6 @@ sina
 sogou
 statistic
 system
-system
-tbs
 tbs
 tencent
 tencent_mmbak
