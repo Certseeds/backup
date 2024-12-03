@@ -1,6 +1,6 @@
 $script = {
     $appList =
-    "7zip",
+    "nanaZip",
     "temurin8-jdk", "temurin11-jdk", "temurin17-jdk", "ant", "aria2",
     "cmake", "colortool",
     "dark", "dismplusplus",
